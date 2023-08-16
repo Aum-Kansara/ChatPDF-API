@@ -33,6 +33,7 @@ def getConversationalChain(vector_store):
     llm=ChatOpenAI()
     memory=ConversationBufferMemory(memory_key='chat_history',return_messages=True)
     conversation_chain=ConversationalRetrievalChain.from_llm(llm=llm,retriever=vector_store.as_retriever(),memory=memory)
+    # conversation_chain=ConversationalRetrievalChain.from_llm(llm=llm,retriever=vector_store.as_retriever())
     return conversation_chain
 
 def handleUserQue(conversation,question):
@@ -52,7 +53,8 @@ raw_text=get_pdf_text(pdf_docs)
 
 # Get the text chunks
 text_chunks=get_text_chunks(raw_text)
-
+# print(text_chunks)
+# text_chunks=["Story\nabout\nRohan\nRohan\nis\na\nvery\nintelligent\nboy.\nHis\nbest\nfriend's\nname\nis\nRahul.\nRahul\nalso\nbecame\na\ngood\nboy\nby\nthe\ncompany\nof\nRohan.\nOnce\nRohan\ngot\na\nhigh\npaying\njob\nat\nGoogle.\nAfter\nwatching\nthis\nnews\nRahul\ngets\njealous.\nHe\nmade\na\nplan\nto\ninsult\nRohan\nin\nfront\nof\npeople.\nAfter\n2\ndays\nrohan\ngets\ninto\ndepression."]
 # Create Vector Stores (Embeddings)
 vector_store=getVectorStores(text_chunks)
 
