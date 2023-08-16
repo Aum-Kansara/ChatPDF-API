@@ -53,7 +53,6 @@ raw_text=get_pdf_text(pdf_docs)
 # Get the text chunks
 text_chunks=get_text_chunks(raw_text)
 
-
 # Create Vector Stores (Embeddings)
 vector_store=getVectorStores(text_chunks)
 
